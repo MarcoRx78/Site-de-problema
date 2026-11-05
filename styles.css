@@ -194,6 +194,10 @@ body {
     transform: scale(1.1);
 }
 
+.muscle-btn.active .selection-check i {
+    opacity: 1 !important;
+}
+
 .muscle-btn.active h4 {
     color: #ffffff !important;
 }
