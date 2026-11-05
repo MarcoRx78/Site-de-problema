@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,7 @@
                     },
                     fontFamily: {
                         heading: ['Outfit', 'sans-serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                        sans: ['Work Sans', 'Plus Jakarta Sans', 'sans-serif']
                     },
                     boxShadow: {
                         'kratos-glow': '0 0 25px rgba(255, 32, 56, 0.35)',
@@ -48,13 +48,16 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Design System Tokens) -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-kratos-dark text-slate-200 font-sans antialiased selection:bg-kratos-600 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
 
+    <!-- Accessibility: Skip to Main Content Link -->
+    <a href="#inicio" class="skip-to-content">Pular para o conteúdo principal</a>
+
     <!-- Background Atmospheric Glows -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
         <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-kratos-600/15 rounded-full blur-[140px] opacity-70"></div>
         <div class="absolute top-[40%] -left-48 w-[500px] h-[500px] bg-kratos-600/10 rounded-full blur-[160px] opacity-50"></div>
         <div class="absolute top-[75%] -right-48 w-[600px] h-[600px] bg-kratos-600/10 rounded-full blur-[180px] opacity-40"></div>
@@ -65,7 +68,7 @@
     <div class="relative z-50 bg-gradient-to-r from-kratos-700 via-kratos-600 to-kratos-700 text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-md flex items-center justify-center gap-2">
         <span class="inline-flex items-center justify-center bg-black/25 px-2 py-0.5 rounded text-[11px] font-bold tracking-wider uppercase">Ciência & Performance</span>
         <span>A dor pós-treino intensa tem protocolo científico. Não sofra à toa.</span>
-        <a href="#diagnostico" class="underline underline-offset-2 font-bold hover:text-slate-100 transition ml-1">Fazer Diagnóstico Gratuito &rarr;</a>
+        <a href="#diagnostico" class="underline underline-offset-2 font-bold hover:text-slate-100 transition ml-1 focus-visible:ring-2 focus-visible:ring-white rounded">Fazer Diagnóstico Gratuito &rarr;</a>
     </div>
 
     <!-- Header / Navbar -->
@@ -77,7 +80,7 @@
                 <a href="#" class="flex items-center gap-3.5 group py-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-kratos-500 rounded-xl" aria-label="Kratos Fit - Página Inicial">
                     <!-- Brand Official Logo Emblem -->
                     <div class="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-kratos-card via-kratos-surface to-black p-2 border border-red-500/40 shadow-kratos-glow group-hover:border-kratos-500 group-hover:shadow-[0_0_25px_rgba(255,32,56,0.55)] group-hover:scale-105 transition-all duration-300">
-                        <img src="assets/logo-kratos-transparent.png" alt="Logotipo Oficial Kratos Fit" class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(206,32,41,0.5)]">
+                        <img src="assets/logo-kratos-transparent.png" alt="Logotipo Oficial Kratos Fit" width="48" height="48" class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(206,32,41,0.5)]">
                     </div>
 
                     <!-- Brand Stylized Text Directly Beside/Below -->
@@ -92,10 +95,10 @@
                 </a>
 
                 <!-- Desktop Navigation Menu -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium" aria-label="Navegação Principal">
                     <a href="#inicio" class="text-slate-300 hover:text-white hover:text-kratos-500 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-kratos-500 hover:after:w-full after:transition-all">Início</a>
                     <a href="#diagnostico" class="text-slate-300 hover:text-white hover:text-kratos-500 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-kratos-500 hover:after:w-full after:transition-all flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-kratos-500 animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-kratos-500 animate-pulse" aria-hidden="true"></span>
                         Diagnóstico
                     </a>
                     <a href="#solucoes" class="text-slate-300 hover:text-white hover:text-kratos-500 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-kratos-500 hover:after:w-full after:transition-all">Dicas de Recuperação</a>
@@ -106,42 +109,42 @@
                 <!-- Action Button in Header -->
                 <div class="hidden sm:flex items-center gap-3">
                     <a href="#diagnostico" class="inline-flex items-center gap-2 bg-gradient-to-r from-kratos-600 to-kratos-500 hover:from-kratos-500 hover:to-red-500 text-white font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-kratos-glow hover:shadow-kratos-lg hover:-translate-y-0.5 transition-all duration-200">
-                        <i data-lucide="activity" class="w-4 h-4"></i>
+                        <i data-lucide="activity" class="w-4 h-4" aria-hidden="true"></i>
                         <span>Avaliar Minha Dor</span>
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Button (Accessible & Hand-Friendly) -->
                 <div class="flex md:hidden">
-                    <button type="button" id="mobileMenuBtn" aria-label="Abrir Menu" class="p-2.5 rounded-xl bg-kratos-card border border-kratos-border text-slate-300 hover:text-white hover:border-kratos-500 focus:outline-none">
-                        <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+                    <button type="button" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir Menu Principal" class="p-3 min-w-[48px] min-h-[48px] rounded-xl bg-kratos-card border border-kratos-border text-slate-300 hover:text-white hover:border-kratos-500 focus:outline-none flex items-center justify-center">
+                        <i data-lucide="menu" id="menuIcon" class="w-6 h-6" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Dropdown Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-kratos-border bg-kratos-surface/98 backdrop-blur-2xl px-6 py-6 space-y-4 shadow-2xl transition-all animate-fadeIn">
+        <!-- Mobile Dropdown Navigation (Ergonomic One-Hand Friendly) -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-kratos-border bg-kratos-surface/98 backdrop-blur-2xl px-6 py-6 space-y-3 shadow-2xl transition-all animate-fadeIn" role="region" aria-label="Menu Móvel">
             <div class="flex items-center gap-3 pb-3 border-b border-kratos-border/60">
-                <div class="w-10 h-10 rounded-xl bg-kratos-card border border-red-500/40 p-1.5 flex items-center justify-center">
-                    <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" class="w-full h-full object-contain">
+                <div class="w-10 h-10 rounded-xl bg-kratos-card border border-red-500/40 p-1.5 flex items-center justify-center shrink-0">
+                    <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" width="40" height="40" loading="lazy" decoding="async" class="w-full h-full object-contain">
                 </div>
                 <div>
                     <span class="font-heading font-black text-lg text-white">KRATOS <span class="text-kratos-500">FIT</span></span>
                     <p class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold">Recuperação & Performance</p>
                 </div>
             </div>
-            <a href="#inicio" class="mobile-nav-link block text-base font-medium text-slate-200 hover:text-kratos-500 py-2">Início</a>
-            <a href="#diagnostico" class="mobile-nav-link flex items-center justify-between text-base font-semibold text-kratos-500 py-2">
+            <a href="#inicio" class="mobile-nav-link flex items-center text-base font-medium text-slate-200 hover:text-kratos-500 min-h-[48px] py-2">Início</a>
+            <a href="#diagnostico" class="mobile-nav-link flex items-center justify-between text-base font-semibold text-kratos-500 min-h-[48px] py-2">
                 <span>Diagnosticador de Dor (Kratos Recover)</span>
-                <span class="text-xs bg-kratos-600/20 border border-kratos-500/40 px-2 py-0.5 rounded-full">Interativo</span>
+                <span class="text-xs bg-kratos-600/20 border border-kratos-500/40 px-2.5 py-0.5 rounded-full font-bold">Interativo</span>
             </a>
-            <a href="#solucoes" class="mobile-nav-link block text-base font-medium text-slate-200 hover:text-kratos-500 py-2">Guia de Soluções (O que fazer)</a>
-            <a href="#seguranca" class="mobile-nav-link block text-base font-medium text-slate-200 hover:text-kratos-500 py-2">Aviso de Saúde (DOMS vs Lesão)</a>
-            <a href="#sobre" class="mobile-nav-link block text-base font-medium text-slate-200 hover:text-kratos-500 py-2">Sobre a Kratos Fit</a>
+            <a href="#solucoes" class="mobile-nav-link flex items-center text-base font-medium text-slate-200 hover:text-kratos-500 min-h-[48px] py-2">Guia de Soluções (O que fazer)</a>
+            <a href="#seguranca" class="mobile-nav-link flex items-center text-base font-medium text-slate-200 hover:text-kratos-500 min-h-[48px] py-2">Aviso de Saúde (DOMS vs Lesão)</a>
+            <a href="#sobre" class="mobile-nav-link flex items-center text-base font-medium text-slate-200 hover:text-kratos-500 min-h-[48px] py-2">Sobre a Kratos Fit</a>
             <div class="pt-2">
-                <a href="#diagnostico" class="mobile-nav-link flex items-center justify-center gap-2 w-full bg-kratos-600 text-white font-bold py-3.5 rounded-xl shadow-kratos-glow">
-                    <i data-lucide="zap" class="w-4 h-4"></i>
+                <a href="#diagnostico" class="mobile-nav-link flex items-center justify-center gap-2 w-full bg-kratos-600 text-white font-bold min-h-[48px] py-3.5 rounded-xl shadow-kratos-glow">
+                    <i data-lucide="zap" class="w-4 h-4" aria-hidden="true"></i>
                     Começar Diagnóstico Agora
                 </a>
             </div>
@@ -149,21 +152,21 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow relative z-10">
+    <main class="flex-grow relative z-10" id="mainContent">
 
         <!-- ==============================================
-             HERO SECTION
+             HERO SECTION (Hierarquia Clara com Botão Único)
         =============================================== -->
         <section id="inicio" class="pt-12 pb-20 md:pt-20 md:pb-32 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                     
-                    <!-- Left Column: Copy & CTAs -->
+                    <!-- Left Column: Copy & Single Primary CTA -->
                     <div class="lg:col-span-7 text-center lg:text-left space-y-6">
                         
                         <!-- Badge -->
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-kratos-card border border-kratos-border text-slate-300 text-xs font-semibold shadow-inner">
-                            <span class="w-2 h-2 rounded-full bg-kratos-500 shadow-[0_0_8px_#ff2038]"></span>
+                            <span class="w-2 h-2 rounded-full bg-kratos-500 shadow-[0_0_8px_#ff2038]" aria-hidden="true"></span>
                             <span>Manejo de Dor Muscular Tardia (DOMS)</span>
                             <span class="bg-kratos-600/30 text-kratos-100 text-[10px] px-2 py-0.5 rounded font-mono font-bold">100% Baseado em Evidências</span>
                         </div>
@@ -185,7 +188,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 pb-2 text-left">
                             <div class="flex items-center gap-2.5 p-3 rounded-xl bg-kratos-card/60 border border-kratos-border/80">
                                 <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-kratos-500 shrink-0">
-                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                    <i data-lucide="shield-check" class="w-5 h-5" aria-hidden="true"></i>
                                 </div>
                                 <div class="text-xs">
                                     <p class="font-bold text-white">Alívio Inteligente</p>
@@ -194,7 +197,7 @@
                             </div>
                             <div class="flex items-center gap-2.5 p-3 rounded-xl bg-kratos-card/60 border border-kratos-border/80">
                                 <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-kratos-500 shrink-0">
-                                    <i data-lucide="gauge" class="w-5 h-5"></i>
+                                    <i data-lucide="gauge" class="w-5 h-5" aria-hidden="true"></i>
                                 </div>
                                 <div class="text-xs">
                                     <p class="font-bold text-white">Diagnóstico Rápido</p>
@@ -203,7 +206,7 @@
                             </div>
                             <div class="flex items-center gap-2.5 p-3 rounded-xl bg-kratos-card/60 border border-kratos-border/80">
                                 <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-kratos-500 shrink-0">
-                                    <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                                    <i data-lucide="heart-pulse" class="w-5 h-5" aria-hidden="true"></i>
                                 </div>
                                 <div class="text-xs">
                                     <p class="font-bold text-white">Segurança Médica</p>
@@ -212,24 +215,26 @@
                             </div>
                         </div>
 
-                        <!-- Main CTAs -->
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                            <a href="#diagnostico" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-kratos-600 to-kratos-500 hover:from-kratos-500 hover:to-red-500 text-white font-heading font-bold text-base px-8 py-4 rounded-xl shadow-kratos-glow hover:shadow-kratos-lg transition-all duration-300 transform hover:-translate-y-1">
-                                <span>Descobrir Como Aliviar Agora</span>
-                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#solucoes" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-kratos-card hover:bg-kratos-surface text-slate-200 border border-kratos-border hover:border-slate-600 font-heading font-semibold text-base px-6 py-4 rounded-xl transition duration-200">
-                                <i data-lucide="book-open" class="w-5 h-5 text-kratos-500"></i>
-                                <span>Ver Guia Prático</span>
+                        <!-- Single Primary CTA (Clear Hierarchy) -->
+                        <div class="flex items-center justify-center lg:justify-start pt-2">
+                            <a href="#diagnostico" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-kratos-600 to-kratos-500 hover:from-kratos-500 hover:to-red-500 text-white font-heading font-bold text-base px-9 py-4 rounded-xl shadow-kratos-glow hover:shadow-kratos-lg transition-all duration-300 transform hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-white">
+                                <span>Fazer diagnóstico</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
                             </a>
                         </div>
 
-                        <!-- Micro Social Proof / Context -->
+                        <!-- Micro Social Proof with Consistent SVG Icons (Replaced Emojis) -->
                         <div class="flex items-center justify-center lg:justify-start gap-3 text-xs text-slate-400 pt-3">
-                            <div class="flex -space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-slate-700 border-2 border-kratos-dark flex items-center justify-center text-[10px] font-bold text-white">🏋️</div>
-                                <div class="w-7 h-7 rounded-full bg-kratos-700 border-2 border-kratos-dark flex items-center justify-center text-[10px] font-bold text-white">🏃</div>
-                                <div class="w-7 h-7 rounded-full bg-slate-800 border-2 border-kratos-dark flex items-center justify-center text-[10px] font-bold text-white">🚴</div>
+                            <div class="flex -space-x-2" aria-hidden="true">
+                                <div class="w-7 h-7 rounded-full bg-slate-800 border-2 border-kratos-dark flex items-center justify-center text-slate-300">
+                                    <i data-lucide="dumbbell" class="w-3.5 h-3.5 text-slate-300"></i>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-kratos-700 border-2 border-kratos-dark flex items-center justify-center text-white">
+                                    <i data-lucide="activity" class="w-3.5 h-3.5 text-white"></i>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-slate-800 border-2 border-kratos-dark flex items-center justify-center text-slate-300">
+                                    <i data-lucide="flame" class="w-3.5 h-3.5 text-slate-300"></i>
+                                </div>
                             </div>
                             <span>Criado para atletas, entusiastas da musculação e iniciantes no esporte.</span>
                         </div>
@@ -240,15 +245,15 @@
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             
                             <!-- Red Glow Effect -->
-                            <div class="absolute -inset-1 bg-gradient-to-r from-kratos-600 to-red-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="absolute -inset-1 bg-gradient-to-r from-kratos-600 to-red-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" aria-hidden="true"></div>
 
                             <!-- Dashboard Card -->
                             <div class="relative bg-kratos-card border border-kratos-border rounded-2xl p-6 shadow-2xl backdrop-blur-sm space-y-6">
                                 
                                 <div class="flex items-center justify-between border-b border-kratos-border pb-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-xl bg-kratos-surface border border-kratos-500/40 p-1.5 flex items-center justify-center">
-                                            <img src="assets/logo-kratos-transparent.png" alt="Kratos Fit Icon" class="w-full h-full object-contain">
+                                        <div class="w-10 h-10 rounded-xl bg-kratos-surface border border-kratos-500/40 p-1.5 flex items-center justify-center shrink-0">
+                                            <img src="assets/logo-kratos-transparent.png" alt="Selo Kratos Fit" width="40" height="40" class="w-full h-full object-contain">
                                         </div>
                                         <div>
                                             <h3 class="font-heading font-bold text-white text-base">Kratos Recover™</h3>
@@ -256,7 +261,7 @@
                                         </div>
                                     </div>
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Ativo
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span> Ativo
                                     </span>
                                 </div>
 
@@ -267,7 +272,7 @@
                                         <span class="text-kratos-500 font-bold">Fase de Pico (24h - 48h)</span>
                                     </div>
                                     <!-- Progress Bar of Muscle Soreness -->
-                                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
+                                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex" role="img" aria-label="Linha do tempo da dor muscular: 12h instalação, 24-48h pico, 72h reparação">
                                         <div class="bg-blue-500 h-full w-[25%]" title="12h: Instalação"></div>
                                         <div class="bg-kratos-500 h-full w-[50%]" title="24-48h: Pico"></div>
                                         <div class="bg-emerald-500 h-full w-[25%]" title="72h+: Reparação"></div>
@@ -284,7 +289,7 @@
                                     <div class="p-3 rounded-xl bg-kratos-surface/60 border border-kratos-border/50">
                                         <span class="text-[11px] text-slate-400 block mb-1">Causa Real:</span>
                                         <p class="text-xs font-semibold text-white flex items-center gap-1.5">
-                                            <i data-lucide="microscope" class="w-3.5 h-3.5 text-kratos-500"></i>
+                                            <i data-lucide="microscope" class="w-3.5 h-3.5 text-kratos-500" aria-hidden="true"></i>
                                             Microlesões Miofibrilares
                                         </p>
                                         <p class="text-[10px] text-slate-500 mt-1">Não é acúmulo de ácido lático!</p>
@@ -292,7 +297,7 @@
                                     <div class="p-3 rounded-xl bg-kratos-surface/60 border border-kratos-border/50">
                                         <span class="text-[11px] text-slate-400 block mb-1">Ação Imediata:</span>
                                         <p class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
-                                            <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i>
+                                            <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400" aria-hidden="true"></i>
                                             Recuperação Ativa
                                         </p>
                                         <p class="text-[10px] text-slate-500 mt-1">Caminhada z1 & hidratação</p>
@@ -320,7 +325,7 @@
                 <!-- Section Header -->
                 <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kratos-600/10 border border-kratos-500/30 text-kratos-500 text-xs font-bold tracking-wide uppercase">
-                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                        <i data-lucide="cpu" class="w-3.5 h-3.5" aria-hidden="true"></i>
                         <span>Ferramenta Interativa Kratos Recover</span>
                     </div>
                     <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white">
@@ -334,13 +339,13 @@
                 <!-- Wizard Container Card -->
                 <div class="bg-kratos-card border border-kratos-border rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-md" id="wizardCard">
                     
-                    <!-- Progress Bar Header -->
-                    <div class="mb-8">
-                        <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-                            <span id="stepIndicatorLabel">Passo 1 de 3: Grupo Muscular</span>
-                            <span id="stepPercentage" class="text-kratos-500">33%</span>
+                    <!-- Progress Bar Header (Accessible with Status Announcement) -->
+                    <div class="mb-8" role="region" aria-label="Progresso da avaliação">
+                        <div class="flex items-center justify-between text-xs font-bold text-slate-300 uppercase tracking-wider mb-3" aria-live="polite">
+                            <span id="stepIndicatorLabel" class="text-slate-200">Passo 1 de 3: Grupo Muscular</span>
+                            <span id="stepPercentage" class="text-kratos-500 font-mono font-bold text-sm">33%</span>
                         </div>
-                        <div class="w-full bg-kratos-surface h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-kratos-surface h-2.5 rounded-full overflow-hidden border border-kratos-border/60" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
                             <div id="stepProgressBar" class="bg-gradient-to-r from-red-600 to-kratos-500 h-full w-1/3 transition-all duration-500 ease-out"></div>
                         </div>
                     </div>
@@ -349,22 +354,22 @@
                     <div id="step1" class="wizard-step space-y-6">
                         <div class="space-y-1">
                             <h3 class="text-xl sm:text-2xl font-heading font-bold text-white flex items-center gap-2">
-                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black">1</span>
+                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black" aria-hidden="true">1</span>
                                 Qual grupo muscular está dolorido?
                             </h3>
                             <p class="text-sm text-slate-400">Escolha a principal região afetada pelo esforço físico.</p>
                         </div>
 
-                        <!-- Muscle Selection Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" id="muscleGrid">
+                        <!-- Muscle Selection Grid (Role Radiogroup, Accessible Keyboard Navigation) -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" id="muscleGrid" role="radiogroup" aria-label="Selecione o grupo muscular afetado">
                             
                             <!-- Pernas / Coxas -->
-                            <button type="button" data-muscle="pernas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="pernas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="footprints" class="w-5 h-5"></i>
+                                        <i data-lucide="footprints" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Pernas & Coxas</h4>
@@ -373,12 +378,12 @@
                             </button>
 
                             <!-- Costas -->
-                            <button type="button" data-muscle="costas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="costas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="shield" class="w-5 h-5"></i>
+                                        <i data-lucide="shield" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Costas & Dorsal</h4>
@@ -387,12 +392,12 @@
                             </button>
 
                             <!-- Peito e Ombros -->
-                            <button type="button" data-muscle="peito" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="peito" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="layers" class="w-5 h-5"></i>
+                                        <i data-lucide="layers" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Peito & Ombros</h4>
@@ -401,12 +406,12 @@
                             </button>
 
                             <!-- Braços -->
-                            <button type="button" data-muscle="bracos" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="bracos" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="biceps" class="w-5 h-5"></i>
+                                        <i data-lucide="biceps" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Braços</h4>
@@ -415,12 +420,12 @@
                             </button>
 
                             <!-- Panturrilhas -->
-                            <button type="button" data-muscle="panturrilhas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="panturrilhas" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="activity" class="w-5 h-5"></i>
+                                        <i data-lucide="activity" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Panturrilhas</h4>
@@ -429,12 +434,12 @@
                             </button>
 
                             <!-- Abdômen / Core -->
-                            <button type="button" data-muscle="abdomen" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="abdomen" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="compass" class="w-5 h-5"></i>
+                                        <i data-lucide="compass" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Abdômen & Core</h4>
@@ -443,12 +448,12 @@
                             </button>
 
                             <!-- Glúteos -->
-                            <button type="button" data-muscle="gluteos" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="gluteos" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="target" class="w-5 h-5"></i>
+                                        <i data-lucide="target" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Glúteos & Pelve</h4>
@@ -457,12 +462,12 @@
                             </button>
 
                             <!-- Corpo Inteiro (Geral) -->
-                            <button type="button" data-muscle="geral" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-muscle="geral" class="muscle-btn group p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-32 focus:outline-none">
                                 <div class="flex justify-between items-start">
                                     <div class="w-10 h-10 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 transition">
-                                        <i data-lucide="flame" class="w-5 h-5"></i>
+                                        <i data-lucide="flame" class="w-5 h-5" aria-hidden="true"></i>
                                     </div>
-                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition">✓</span>
+                                    <span class="selection-check w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-transparent group-hover:border-kratos-500 transition font-bold" aria-hidden="true">✓</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Corpo Inteiro</h4>
@@ -474,87 +479,90 @@
 
                         <!-- Step 1 Controls -->
                         <div class="flex justify-end pt-4">
-                            <button type="button" id="nextToStep2" disabled class="btn-primary-kratos inline-flex items-center gap-2 bg-kratos-600 hover:bg-kratos-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-7 py-3.5 rounded-xl transition shadow-kratos-glow">
+                            <button type="button" id="nextToStep2" disabled class="btn-primary-kratos inline-flex items-center gap-2 bg-kratos-600 hover:bg-kratos-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-7 py-3.5 rounded-xl transition shadow-kratos-glow min-h-[48px]">
                                 <span>Avançar para Nível de Dor</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- WIZARD STEP 2: Nível da Dor (1 a 5) -->
+                    <!-- WIZARD STEP 2: Nível da Dor (1 a 5 com Contraste AA e Nível 5 de Destaque) -->
                     <div id="step2" class="wizard-step hidden space-y-6">
                         <div class="space-y-1">
                             <h3 class="text-xl sm:text-2xl font-heading font-bold text-white flex items-center gap-2">
-                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black">2</span>
+                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black" aria-hidden="true">2</span>
                                 Qual a intensidade da sua dor neste momento?
                             </h3>
                             <p class="text-sm text-slate-400">Escala de desconforto de 1 a 5 com base na sua mobilidade.</p>
                         </div>
 
-                        <!-- Pain Level Cards -->
-                        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3" id="painLevelsGrid">
+                        <!-- Pain Level Cards (Role Radiogroup, Contraste AA, Texto Junto da Cor) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3" id="painLevelsGrid" role="radiogroup" aria-label="Selecione o nível de dor de 1 a 5">
                             
                             <!-- Nível 1 -->
-                            <button type="button" data-pain="1" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-emerald-500 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
-                                <span class="text-2xl font-black text-emerald-400">1</span>
-                                <div>
-                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Leve</h5>
-                                    <p class="text-[11px] text-slate-400 mt-1">Apenas sinto o músculo quando contraio.</p>
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-pain="1" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-emerald-400 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-black text-emerald-400">1</span>
+                                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Leve</span>
                                 </div>
-                                <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full">Mobilidade 100%</span>
+                                <p class="text-xs text-slate-300 mt-2 text-center leading-snug">Apenas sinto o músculo quando contraio.</p>
+                                <span class="text-[11px] text-emerald-300 font-semibold bg-emerald-950/70 border border-emerald-500/40 px-2.5 py-1 rounded-full mt-2">Mobilidade 100%</span>
                             </button>
 
                             <!-- Nível 2 -->
-                            <button type="button" data-pain="2" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-cyan-500 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
-                                <span class="text-2xl font-black text-cyan-400">2</span>
-                                <div>
-                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Moderada Leve</h5>
-                                    <p class="text-[11px] text-slate-400 mt-1">Sensação de peso e rigidez matinal.</p>
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-pain="2" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-sky-400 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-black text-sky-400">2</span>
+                                    <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Moderada Leve</span>
                                 </div>
-                                <span class="text-[10px] text-cyan-400 font-semibold bg-cyan-500/10 px-2 py-0.5 rounded-full">Incômodo suave</span>
+                                <p class="text-xs text-slate-300 mt-2 text-center leading-snug">Sensação de peso e rigidez matinal.</p>
+                                <span class="text-[11px] text-sky-300 font-semibold bg-sky-950/70 border border-sky-500/40 px-2.5 py-1 rounded-full mt-2">Incômodo suave</span>
                             </button>
 
                             <!-- Nível 3 (Padrão DOMS) -->
-                            <button type="button" data-pain="3" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-amber-500 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
-                                <span class="text-2xl font-black text-amber-400">3</span>
-                                <div>
-                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Marcada (DOMS)</h5>
-                                    <p class="text-[11px] text-slate-400 mt-1">Dói ao sentar/levantar ou esticar.</p>
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-pain="3" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-amber-400 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-black text-amber-400">3</span>
+                                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Marcada (DOMS)</span>
                                 </div>
-                                <span class="text-[10px] text-amber-400 font-semibold bg-amber-500/10 px-2 py-0.5 rounded-full">Pico normal</span>
+                                <p class="text-xs text-slate-300 mt-2 text-center leading-snug">Dói ao sentar/levantar ou esticar.</p>
+                                <span class="text-[11px] text-amber-300 font-semibold bg-amber-950/70 border border-amber-500/40 px-2.5 py-1 rounded-full mt-2">Pico normal</span>
                             </button>
 
                             <!-- Nível 4 -->
-                            <button type="button" data-pain="4" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-orange-500 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
-                                <span class="text-2xl font-black text-orange-400">4</span>
-                                <div>
-                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Severa</h5>
-                                    <p class="text-[11px] text-slate-400 mt-1">Ando com dificuldade, músculo muito tenso.</p>
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-pain="4" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-orange-400 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-black text-orange-400">4</span>
+                                    <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Severa</span>
                                 </div>
-                                <span class="text-[10px] text-orange-400 font-semibold bg-orange-500/10 px-2 py-0.5 rounded-full">Limitação real</span>
+                                <p class="text-xs text-slate-300 mt-2 text-center leading-snug">Ando com dificuldade, músculo muito tenso.</p>
+                                <span class="text-[11px] text-orange-300 font-semibold bg-orange-950/70 border border-orange-500/40 px-2.5 py-1 rounded-full mt-2">Limitação real</span>
                             </button>
 
-                            <!-- Nível 5 (Alerta) -->
-                            <button type="button" data-pain="5" class="pain-btn p-4 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none">
-                                <span class="text-2xl font-black text-kratos-500">5</span>
-                                <div>
-                                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Extrema</h5>
-                                    <p class="text-[11px] text-slate-400 mt-1">Dor aguda, fisgada ou não consigo mover.</p>
+                            <!-- Nível 5 (Alerta de Atenção Médica com Destaque Visual) -->
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-pain="5" class="pain-btn p-4 rounded-2xl bg-red-950/30 border-2 border-red-500/80 hover:border-red-400 text-center transition flex flex-col items-center justify-between min-h-[140px] focus:outline-none shadow-[0_0_15px_rgba(239,68,68,0.25)]">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-black text-red-400">5</span>
+                                    <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Extrema</span>
                                 </div>
-                                <span class="text-[10px] text-kratos-500 font-semibold bg-red-500/10 px-2 py-0.5 rounded-full">Atenção Médica</span>
+                                <p class="text-xs text-red-200 mt-2 text-center leading-snug font-medium">Dor aguda, fisgada ou não consigo mover.</p>
+                                <span class="text-[11px] text-red-200 font-bold bg-red-900/80 border border-red-400 px-2.5 py-1 rounded-full mt-2 flex items-center gap-1 shadow-sm">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-red-400" aria-hidden="true"></i>
+                                    <span>Atenção Médica</span>
+                                </span>
                             </button>
 
                         </div>
 
                         <!-- Step 2 Controls -->
                         <div class="flex justify-between items-center pt-4">
-                            <button type="button" id="prevToStep1" class="text-slate-400 hover:text-white text-sm font-semibold inline-flex items-center gap-1.5 transition">
-                                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            <button type="button" id="prevToStep1" class="text-slate-300 hover:text-white text-sm font-semibold inline-flex items-center gap-1.5 transition min-h-[48px] px-3 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-kratos-500">
+                                <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
                                 <span>Voltar</span>
                             </button>
-                            <button type="button" id="nextToStep3" disabled class="inline-flex items-center gap-2 bg-kratos-600 hover:bg-kratos-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-7 py-3.5 rounded-xl transition shadow-kratos-glow">
+                            <button type="button" id="nextToStep3" disabled class="inline-flex items-center gap-2 bg-kratos-600 hover:bg-kratos-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-7 py-3.5 rounded-xl transition shadow-kratos-glow min-h-[48px]">
                                 <span>Avançar para Tempo Pós-Treino</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -563,22 +571,22 @@
                     <div id="step3" class="wizard-step hidden space-y-6">
                         <div class="space-y-1">
                             <h3 class="text-xl sm:text-2xl font-heading font-bold text-white flex items-center gap-2">
-                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black">3</span>
+                                <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-kratos-500 text-white text-xs font-black" aria-hidden="true">3</span>
                                 Quanto tempo se passou desde o esforço físico?
                             </h3>
                             <p class="text-sm text-slate-400">O tempo decorrido determina se você deve aplicar frio, calor ou movimento ativo.</p>
                         </div>
 
-                        <!-- Time Options -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="timeGrid">
+                        <!-- Time Options (Role Radiogroup) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="timeGrid" role="radiogroup" aria-label="Selecione o tempo decorrido desde o treino">
                             
                             <!-- < 12h -->
-                            <button type="button" data-time="12" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-time="12" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
                                 <div class="flex justify-between items-start">
-                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 font-bold text-sm">
+                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-200 group-hover:text-kratos-500 font-bold text-sm">
                                         &lt;12h
                                     </span>
-                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Fase Inicial</span>
+                                    <span class="text-[10px] text-slate-300 bg-slate-800 px-2 py-0.5 rounded font-medium">Fase Inicial</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Menos de 12 horas</h4>
@@ -587,12 +595,12 @@
                             </button>
 
                             <!-- ~24h -->
-                            <button type="button" data-time="24" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-time="24" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
                                 <div class="flex justify-between items-start">
-                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 font-bold text-sm">
+                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-200 group-hover:text-kratos-500 font-bold text-sm">
                                         24h
                                     </span>
-                                    <span class="text-[10px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">Dia Seguinte</span>
+                                    <span class="text-[10px] text-amber-300 bg-amber-950/80 border border-amber-500/30 px-2 py-0.5 rounded font-medium">Dia Seguinte</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Aproximadamente 24h</h4>
@@ -601,12 +609,12 @@
                             </button>
 
                             <!-- ~48h -->
-                            <button type="button" data-time="48" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-time="48" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
                                 <div class="flex justify-between items-start">
-                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 font-bold text-sm">
+                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-200 group-hover:text-kratos-500 font-bold text-sm">
                                         48h
                                     </span>
-                                    <span class="text-[10px] text-kratos-500 bg-red-500/10 px-2 py-0.5 rounded font-bold">Pico Máximo</span>
+                                    <span class="text-[10px] text-red-200 bg-red-950/80 border border-red-500/40 px-2 py-0.5 rounded font-bold">Pico Máximo</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">Aproximadamente 48h</h4>
@@ -615,12 +623,12 @@
                             </button>
 
                             <!-- 72h+ -->
-                            <button type="button" data-time="72" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
+                            <button type="button" role="radio" aria-checked="false" tabindex="0" data-time="72" class="time-btn group p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-500 text-left transition duration-200 flex flex-col justify-between h-36 focus:outline-none">
                                 <div class="flex justify-between items-start">
-                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-300 group-hover:text-kratos-500 font-bold text-sm">
+                                    <span class="w-9 h-9 rounded-xl bg-kratos-card flex items-center justify-center text-slate-200 group-hover:text-kratos-500 font-bold text-sm">
                                         72h+
                                     </span>
-                                    <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Resolução</span>
+                                    <span class="text-[10px] text-emerald-300 bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded font-medium">Resolução</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-white text-sm group-hover:text-kratos-500 transition">72 horas ou mais</h4>
@@ -632,12 +640,12 @@
 
                         <!-- Step 3 Controls -->
                         <div class="flex justify-between items-center pt-4">
-                            <button type="button" id="prevToStep2" class="text-slate-400 hover:text-white text-sm font-semibold inline-flex items-center gap-1.5 transition">
-                                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            <button type="button" id="prevToStep2" class="text-slate-300 hover:text-white text-sm font-semibold inline-flex items-center gap-1.5 transition min-h-[48px] px-3 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-kratos-500">
+                                <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
                                 <span>Voltar</span>
                             </button>
-                            <button type="button" id="generateProtocolBtn" disabled class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-kratos-500 hover:from-kratos-500 hover:to-red-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-8 py-3.5 rounded-xl transition shadow-kratos-glow">
-                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <button type="button" id="generateProtocolBtn" disabled class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-kratos-500 hover:from-kratos-500 hover:to-red-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm px-8 py-3.5 rounded-xl transition shadow-kratos-glow min-h-[48px]">
+                                <i data-lucide="sparkles" class="w-4 h-4" aria-hidden="true"></i>
                                 <span>Gerar Meu Protocolo Kratos</span>
                             </button>
                         </div>
@@ -650,47 +658,47 @@
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-kratos-surface to-kratos-card border border-kratos-border">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" aria-hidden="true"></span>
                                     <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Diagnóstico Concluído</span>
                                 </div>
                                 <h3 class="text-2xl font-heading font-black text-white" id="resultMuscleTitle">
                                     Protocolo Personalizado: Pernas & Coxas
                                 </h3>
-                                <p class="text-xs text-slate-400 mt-1" id="resultParametersSummary">
+                                <p class="text-xs text-slate-300 mt-1" id="resultParametersSummary">
                                     Intensidade: Moderada (Nível 3) • Tempo pós-treino: 48h
                                 </p>
                             </div>
                             
                             <div class="flex items-center gap-2 shrink-0">
-                                <button type="button" id="resetWizardBtn" class="px-4 py-2 text-xs font-bold text-slate-300 hover:text-white bg-kratos-surface border border-kratos-border hover:border-slate-500 rounded-xl transition flex items-center gap-1.5">
-                                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                                <button type="button" id="resetWizardBtn" class="px-4 py-2.5 text-xs font-bold text-slate-300 hover:text-white bg-kratos-surface border border-kratos-border hover:border-slate-500 rounded-xl transition flex items-center gap-1.5 min-h-[44px]">
+                                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5" aria-hidden="true"></i>
                                     <span>Recalcular</span>
                                 </button>
-                                <button type="button" id="copyProtocolBtn" class="px-4 py-2 text-xs font-bold text-white bg-kratos-600 hover:bg-kratos-500 rounded-xl transition flex items-center gap-1.5 shadow-kratos-glow">
-                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <button type="button" id="copyProtocolBtn" aria-label="Copiar protocolo de recuperação para a área de transferência" class="px-4 py-2.5 text-xs font-bold text-white bg-kratos-600 hover:bg-kratos-500 rounded-xl transition flex items-center gap-1.5 shadow-kratos-glow min-h-[44px]">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5" aria-hidden="true"></i>
                                     <span id="copyBtnText">Copiar Plano</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Dynamic Alert Box (Shown conditionally if pain is level 5 or 72h+ anomalous) -->
-                        <div id="resultSafetyAlert" class="hidden p-4 rounded-2xl bg-amber-500/10 border border-amber-500/40 text-amber-200 text-sm flex items-start gap-3">
-                            <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
+                        <div id="resultSafetyAlert" class="hidden p-4 rounded-2xl bg-amber-950/40 border border-amber-500/50 text-amber-200 text-sm flex items-start gap-3" role="alert">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" aria-hidden="true"></i>
                             <div>
                                 <strong class="font-bold text-white block">Nota de Atenção Clínica:</strong>
                                 <span id="resultSafetyAlertText">Sua dor está em nível máximo ou dura mais de 72h sem alívio. Monitore sinais de edema e consulte um médico se houver perda de mobilidade motora.</span>
                             </div>
                         </div>
 
-                        <!-- 4 Pillars Protocol Cards Grid -->
+                        <!-- 4 Pillars Protocol Cards Grid (Escaneáveis e Estruturados) -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="protocolCardsContainer">
                             
                             <!-- Card 1: Temperatura (Crio / Termo) -->
                             <div class="p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-border/80 transition space-y-3">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-cyan-400 flex items-center justify-center">
-                                            <i data-lucide="thermometer-snowflake" id="tempIcon" class="w-5 h-5"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                            <i data-lucide="thermometer-snowflake" id="tempIcon" class="w-5 h-5" aria-hidden="true"></i>
                                         </div>
                                         <h4 class="font-heading font-bold text-white text-base">Terapia Térmica</h4>
                                     </div>
@@ -700,7 +708,7 @@
                                     Aplique compressa morna por 15 a 20 minutos. O calor dilata os vasos periféricos, acelerando a drenagem de resíduos inflamatórios e relaxando a musculatura contraída.
                                 </p>
                                 <div class="text-[11px] text-slate-400 bg-kratos-card p-2.5 rounded-lg border border-kratos-border/50 flex items-center gap-2">
-                                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400" aria-hidden="true"></i>
                                     <span id="tempDuration">Duração sugerida: 15-20 min • 2x ao dia</span>
                                 </div>
                             </div>
@@ -709,8 +717,8 @@
                             <div class="p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-border/80 transition space-y-3">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-                                            <i data-lucide="footprints" class="w-5 h-5"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                            <i data-lucide="footprints" class="w-5 h-5" aria-hidden="true"></i>
                                         </div>
                                         <h4 class="font-heading font-bold text-white text-base">Recuperação Ativa</h4>
                                     </div>
@@ -720,7 +728,7 @@
                                     Realize 20 a 30 minutos de caminhada leve ou bicicleta ergométrica em zona 1 (baixa frequência). O bombeamento vascular mecânico limpa metabólitos sem causar novas lesões.
                                 </p>
                                 <div class="text-[11px] text-slate-400 bg-kratos-card p-2.5 rounded-lg border border-kratos-border/50 flex items-center gap-2">
-                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400" aria-hidden="true"></i>
                                     <span id="activeRecoveryGoal">Meta: Aumentar circulação periférica em 40%</span>
                                 </div>
                             </div>
@@ -729,8 +737,8 @@
                             <div class="p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-border/80 transition space-y-3">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
-                                            <i data-lucide="activity" class="w-5 h-5"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                                            <i data-lucide="activity" class="w-5 h-5" aria-hidden="true"></i>
                                         </div>
                                         <h4 class="font-heading font-bold text-white text-base">Mobilidade & Fáscia</h4>
                                     </div>
@@ -740,7 +748,7 @@
                                     Uso de rolo de liberação (foam roller) ou massagem com pressão leve a moderada por 60 segundos por feixe muscular. Evite pressões pontuais dolorosas que ativem o reflexo miotático.
                                 </p>
                                 <div class="text-[11px] text-slate-400 bg-kratos-card p-2.5 rounded-lg border border-kratos-border/50 flex items-center gap-2">
-                                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-purple-400"></i>
+                                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-purple-400" aria-hidden="true"></i>
                                     <span>Não force alongamentos máximos em músculo inflamado</span>
                                 </div>
                             </div>
@@ -749,8 +757,8 @@
                             <div class="p-5 rounded-2xl bg-kratos-surface border border-kratos-border hover:border-kratos-border/80 transition space-y-3">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-9 h-9 rounded-xl bg-kratos-500/10 text-kratos-500 flex items-center justify-center">
-                                            <i data-lucide="droplet" class="w-5 h-5"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-kratos-500/10 text-kratos-500 flex items-center justify-center shrink-0">
+                                            <i data-lucide="droplet" class="w-5 h-5" aria-hidden="true"></i>
                                         </div>
                                         <h4 class="font-heading font-bold text-white text-base">Reparação Bioquímica</h4>
                                     </div>
@@ -760,16 +768,17 @@
                                     Consuma 35 a 45 ml de água por kg de peso corporal, associada a sódio e magnésio. Garanta 20-30g de proteína de alto valor biológico e priorize 8 horas de sono contínuo para pico de GH.
                                 </p>
                                 <div class="text-[11px] text-slate-400 bg-kratos-card p-2.5 rounded-lg border border-kratos-border/50 flex items-center gap-2">
-                                    <i data-lucide="moon" class="w-3.5 h-3.5 text-kratos-500"></i>
+                                    <i data-lucide="moon" class="w-3.5 h-3.5 text-kratos-500" aria-hidden="true"></i>
                                     <span>Sono profundo = 95% da síntese tecidual reparadora</span>
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- Direct Recommendation Note -->
-                        <div class="p-4 rounded-xl bg-kratos-surface/50 border border-dashed border-kratos-border text-center text-xs text-slate-400">
-                            💡 Salve ou tire um print deste protocolo. O protocolo Kratos é dinâmico e pode ser refeito sempre que treinar um novo grupo muscular.
+                        <!-- Direct Recommendation Note with SVG Icon -->
+                        <div class="p-4 rounded-xl bg-kratos-surface/60 border border-dashed border-kratos-border text-center text-xs text-slate-300 flex items-center justify-center gap-2">
+                            <i data-lucide="info" class="w-4 h-4 text-kratos-500 shrink-0" aria-hidden="true"></i>
+                            <span>Salve ou tire um print deste protocolo. O protocolo Kratos é dinâmico e pode ser refeito sempre que treinar um novo grupo muscular.</span>
                         </div>
 
                     </div>
@@ -787,7 +796,7 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kratos-card border border-kratos-border text-xs font-semibold text-slate-300">
-                        <i data-lucide="check-check" class="w-3.5 h-3.5 text-kratos-500"></i>
+                        <i data-lucide="check-check" class="w-3.5 h-3.5 text-kratos-500" aria-hidden="true"></i>
                         <span>Manual Científico Kratos Fit</span>
                     </div>
                     <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
@@ -804,8 +813,8 @@
                     <!-- COLUMN 1: BOAS PRÁTICAS (O QUE FAZER) -->
                     <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-kratos-card to-kratos-surface border border-emerald-500/30 shadow-xl space-y-6 relative overflow-hidden">
                         <div class="flex items-center gap-3 border-b border-kratos-border pb-4">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                                <i data-lucide="thumbs-up" class="w-5 h-5"></i>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                                <i data-lucide="thumbs-up" class="w-5 h-5" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
@@ -822,7 +831,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-emerald-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="activity" class="w-4 h-4"></i>
+                                        <i data-lucide="activity" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Recuperação Ativa (Active Recovery)</h4>
@@ -837,7 +846,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-emerald-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="hand" class="w-4 h-4"></i>
+                                        <i data-lucide="hand" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Massagem e Liberação Miofascial</h4>
@@ -852,7 +861,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-emerald-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="utensils" class="w-4 h-4"></i>
+                                        <i data-lucide="utensils" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Nutrição Reparadora & Eletrólitos</h4>
@@ -867,7 +876,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-emerald-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="moon" class="w-4 h-4"></i>
+                                        <i data-lucide="moon" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Sono Anabólico de Alta Qualidade</h4>
@@ -884,8 +893,8 @@
                     <!-- COLUMN 2: O QUE EVITAR (ERROS CRÍTICOS) -->
                     <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-kratos-card to-kratos-surface border border-kratos-600/40 shadow-xl space-y-6 relative overflow-hidden">
                         <div class="flex items-center gap-3 border-b border-kratos-border pb-4">
-                            <div class="w-10 h-10 rounded-xl bg-kratos-600/20 border border-kratos-500/40 flex items-center justify-center text-kratos-500">
-                                <i data-lucide="ban" class="w-5 h-5"></i>
+                            <div class="w-10 h-10 rounded-xl bg-kratos-600/20 border border-kratos-500/40 flex items-center justify-center text-kratos-500 shrink-0">
+                                <i data-lucide="ban" class="w-5 h-5" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
@@ -902,7 +911,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-kratos-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-red-500/20 text-kratos-500 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="dumbbell" class="w-4 h-4"></i>
+                                        <i data-lucide="dumbbell" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Treinar Pesado na Mesma Musculatura</h4>
@@ -917,7 +926,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-kratos-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-red-500/20 text-kratos-500 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="pill" class="w-4 h-4"></i>
+                                        <i data-lucide="pill" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Automedicação com Anti-inflamatórios (AINEs)</h4>
@@ -932,7 +941,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-kratos-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-red-500/20 text-kratos-500 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="bed" class="w-4 h-4"></i>
+                                        <i data-lucide="bed" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Imobilidade Total / Repouso Absoluto</h4>
@@ -947,7 +956,7 @@
                             <div class="p-4 rounded-2xl bg-kratos-surface/80 border border-kratos-border/60 hover:border-kratos-500/40 transition">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-red-500/20 text-kratos-500 flex items-center justify-center shrink-0 mt-0.5">
-                                        <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                                        <i data-lucide="maximize-2" class="w-4 h-4" aria-hidden="true"></i>
                                     </div>
                                     <div class="space-y-1">
                                         <h4 class="font-heading font-bold text-white text-sm">Alongamentos Balísticos ou Agressivos</h4>
@@ -968,12 +977,13 @@
 
         <!-- ==============================================
              AVISO DE SAÚDE E SEGURANÇA (DOMS VS LESÃO)
+             (Aviso de Rabdomiólise com Máximo Destaque Visual)
         =============================================== -->
         <section id="seguranca" class="py-20 bg-gradient-to-b from-kratos-dark via-kratos-surface to-kratos-dark relative">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <!-- Main Safety Callout Card -->
-                <div class="relative rounded-3xl bg-kratos-card border-2 border-kratos-600/50 p-6 sm:p-10 shadow-2xl overflow-hidden">
+                <div class="relative rounded-3xl bg-kratos-card border-2 border-kratos-600/50 p-6 sm:p-10 shadow-2xl overflow-hidden space-y-8">
                     
                     <!-- Top Ribbon -->
                     <div class="absolute -top-1 right-8 bg-gradient-to-r from-red-600 to-kratos-500 text-white font-bold text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-b-xl shadow-md">
@@ -981,9 +991,9 @@
                     </div>
 
                     <!-- Header -->
-                    <div class="max-w-3xl mb-8 space-y-3">
+                    <div class="max-w-3xl space-y-3">
                         <div class="inline-flex items-center gap-2 text-kratos-500 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                            <i data-lucide="shield-alert" class="w-4 h-4" aria-hidden="true"></i>
                             <span>Segurança do Praticante</span>
                         </div>
                         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
@@ -994,78 +1004,87 @@
                         </p>
                     </div>
 
-                    <!-- Interactive Comparison Table / Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- ELEMENTO MAIS DESTACADO DA SEÇÃO: AVISO CRÍTICO DE URGÊNCIA & RABDOMIÓLISE -->
+                    <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-red-950/90 via-red-900/60 to-red-950/90 border-2 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.35)] relative overflow-hidden" role="alert" aria-label="Alerta crítico de urgência médica">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-lg mt-0.5">
+                                <i data-lucide="alert-octagon" class="w-7 h-7 animate-pulse" aria-hidden="true"></i>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-red-500 text-white text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-sm">
+                                        Alerta Crítico de Urgência
+                                    </span>
+                                    <span class="text-red-300 text-xs font-bold">Aviso de Responsabilidade Médica</span>
+                                </div>
+                                <p class="text-white text-xs sm:text-sm leading-relaxed font-medium">
+                                    O conteúdo disponibilizado pela Kratos Fit tem caráter puramente educativo e informativo e <strong>não substitui a consulta, diagnóstico ou acompanhamento com médicos ortopedistas, fisioterapeutas ou educadores físicos</strong>. Se você apresentar dor incapacitante contínua, inchaço volumoso, perda de sensibilidade ou <strong>urina com coloração escura (cor de refrigerante/chá preto - sinal de rabdomiólise)</strong>, busque atendimento médico de urgência imediatamente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Comparison Table / Cards (Mobile: Empilhado / Desktop: Lado a Lado) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         
                         <!-- Col 1: DOMS (Normal) -->
-                        <div class="p-5 sm:p-6 rounded-2xl bg-kratos-surface border border-emerald-500/30 space-y-4">
+                        <div class="p-5 sm:p-6 rounded-2xl bg-kratos-surface border border-emerald-500/40 space-y-4">
                             <div class="flex items-center justify-between border-b border-kratos-border pb-3">
                                 <span class="font-heading font-bold text-lg text-emerald-400 flex items-center gap-2">
-                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400" aria-hidden="true"></i>
                                     DOMS (Dor Tardia Saudável)
                                 </span>
-                                <span class="text-xs bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded">Evolução Normal</span>
+                                <span class="text-xs bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/20">Evolução Normal</span>
                             </div>
                             <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-emerald-400 font-bold mt-0.5">●</span>
+                                    <span class="text-emerald-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Início gradual:</strong> Aparece de 12 a 24 horas após o treino, atingindo o pico entre 24 e 48 horas.</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-emerald-400 font-bold mt-0.5">●</span>
+                                    <span class="text-emerald-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Sensação difusa:</strong> Sensação de peso, queimação suave ao mover ou rigidez em todo o ventre muscular.</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-emerald-400 font-bold mt-0.5">●</span>
+                                    <span class="text-emerald-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Simetria:</strong> Geralmente afeta ambos os lados do corpo igualmente (ambas as coxas ou ambos os braços).</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-emerald-400 font-bold mt-0.5">●</span>
+                                    <span class="text-emerald-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Melhora ao aquecer:</strong> Conforme o corpo esquenta e você caminha, a rigidez diminui sensivelmente.</span>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Col 2: Lesão (Perigo) -->
-                        <div class="p-5 sm:p-6 rounded-2xl bg-kratos-surface border border-red-500/50 space-y-4">
+                        <div class="p-5 sm:p-6 rounded-2xl bg-kratos-surface border border-red-500/60 space-y-4">
                             <div class="flex items-center justify-between border-b border-kratos-border pb-3">
-                                <span class="font-heading font-bold text-lg text-kratos-500 flex items-center gap-2">
-                                    <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+                                <span class="font-heading font-bold text-lg text-red-400 flex items-center gap-2">
+                                    <i data-lucide="alert-octagon" class="w-5 h-5 text-red-400" aria-hidden="true"></i>
                                     Lesão Muscular ou Tendínea
                                 </span>
-                                <span class="text-xs bg-red-500/15 text-kratos-500 font-bold px-2 py-0.5 rounded">Risco / Cuidado</span>
+                                <span class="text-xs bg-red-500/15 text-red-400 font-bold px-2 py-0.5 rounded border border-red-500/30">Risco / Cuidado</span>
                             </div>
                             <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-kratos-500 font-bold mt-0.5">●</span>
+                                    <span class="text-red-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Início súbito:</strong> Fisgada aguda durante uma repetição ou dor pontual imediata no treino.</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-kratos-500 font-bold mt-0.5">●</span>
+                                    <span class="text-red-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Dor em pontada ou facada:</strong> Localizada em um ponto bem específico ao toque ou na inserção articular.</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-kratos-500 font-bold mt-0.5">●</span>
+                                    <span class="text-red-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Sinais inflamatórios visíveis:</strong> Edema (inchaço), calor local intenso ou hematoma roxo visível na pele.</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
-                                    <span class="text-kratos-500 font-bold mt-0.5">●</span>
+                                    <span class="text-red-400 font-bold mt-0.5" aria-hidden="true">●</span>
                                     <span><strong>Perda de função:</strong> Incapacidade de apoiar o peso do corpo ou fraqueza motora assimétrica.</span>
                                 </li>
                             </ul>
                         </div>
 
-                    </div>
-
-                    <!-- Medical Disclaimer Alert Footer -->
-                    <div class="p-4 sm:p-5 rounded-2xl bg-red-950/40 border border-kratos-600/40 text-xs sm:text-sm text-slate-300 space-y-2">
-                        <div class="flex items-center gap-2 text-red-400 font-bold">
-                            <i data-lucide="alert-circle" class="w-4 h-4"></i>
-                            <span>Aviso de Responsabilidade & Sinais de Urgência:</span>
-                        </div>
-                        <p class="leading-relaxed">
-                            O conteúdo disponibilizado pela Kratos Fit tem caráter puramente educativo e informativo e <strong>não substitui a consulta, diagnóstico ou acompanhamento com médicos ortopedistas, fisioterapeutas ou educadores físicos</strong>. Se você apresentar dor incapacitante contínua, inchaço volumoso, perda de sensibilidade ou <strong>urina com coloração escura (cor de refrigerante/chá preto - sinal de rabdomiólise)</strong>, busque atendimento médico de urgência imediatamente.
-                        </p>
                     </div>
 
                 </div>
@@ -1083,8 +1102,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-4 text-center lg:text-left flex flex-col items-center lg:items-start">
                         <div class="w-24 h-24 rounded-3xl bg-gradient-to-br from-kratos-card via-kratos-surface to-black p-3.5 border-2 border-red-500/50 flex items-center justify-center shadow-kratos-glow mb-4">
-                            <!-- Official Logo Emblem -->
-                            <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" class="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(206,32,41,0.55)]">
+                            <!-- Official Logo Emblem with dimensions and lazy loading -->
+                            <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" width="96" height="96" loading="lazy" decoding="async" class="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(206,32,41,0.55)]">
                         </div>
                         <h3 class="font-heading font-black text-2xl text-white">KRATOS FIT</h3>
                         <p class="text-xs uppercase tracking-widest text-kratos-500 font-bold mt-1">Força Através da Recuperação</p>
@@ -1103,7 +1122,7 @@
                     </div>
                 </div>
 
-                <!-- FAQ Accordion -->
+                <!-- FAQ Accordion (Acessível com aria-expanded & button) -->
                 <div class="space-y-4 pt-8 border-t border-kratos-border">
                     <div class="text-center mb-8">
                         <h3 class="font-heading font-bold text-2xl sm:text-3xl text-white">Dúvidas Frequentes sobre DOMS</h3>
@@ -1112,33 +1131,33 @@
 
                     <!-- FAQ 1 -->
                     <div class="faq-item rounded-2xl bg-kratos-card border border-kratos-border overflow-hidden transition">
-                        <button type="button" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none">
+                        <button type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-kratos-500 min-h-[48px]">
                             <span>O ácido lático é o responsável pela dor do dia seguinte?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300"></i>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300 shrink-0" aria-hidden="true"></i>
                         </button>
-                        <div class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
+                        <div id="faq-a-1" role="region" aria-labelledby="faq-q-1" class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
                             <strong>Mito desmentido pela ciência!</strong> O lactato produzido durante exercícios anaeróbios intensos retorna aos níveis basais em menos de 60 minutos após o término do treino, sendo metabolizado pelo fígado e pelo coração. A dor muscular tardia (DOMS) é causada por microfissuras ultraestruturais nas linhas Z dos sarcômeros e pela subsequente resposta imune-inflamatória benéfica.
                         </div>
                     </div>
 
                     <!-- FAQ 2 -->
                     <div class="faq-item rounded-2xl bg-kratos-card border border-kratos-border overflow-hidden transition">
-                        <button type="button" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none">
+                        <button type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-kratos-500 min-h-[48px]">
                             <span>Devo treinar mesmo se ainda estiver sentindo dor?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300"></i>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300 shrink-0" aria-hidden="true"></i>
                         </button>
-                        <div class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
+                        <div id="faq-a-2" role="region" aria-labelledby="faq-q-2" class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
                             Depende da estratégia: você pode (e deve) manter sua rotina de treinos trabalhando <strong>outro grupo muscular</strong> (por exemplo: treinar membros superiores enquanto as pernas se recuperam). Você também pode realizar um treino de recuperação ativa com cargas muito baixas (menos de 30% de 1RM) para aumentar o aporte de nutrientes. Evite apenas treinar pesado o mesmo músculo que está em pico de dor.
                         </div>
                     </div>
 
                     <!-- FAQ 3 -->
                     <div class="faq-item rounded-2xl bg-kratos-card border border-kratos-border overflow-hidden transition">
-                        <button type="button" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none">
+                        <button type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3" class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center text-white font-heading font-semibold text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-kratos-500 min-h-[48px]">
                             <span>Se eu não sentir dor no dia seguinte, significa que o treino não fez efeito?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300"></i>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-kratos-500 transition-transform duration-300 shrink-0" aria-hidden="true"></i>
                         </button>
-                        <div class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
+                        <div id="faq-a-3" role="region" aria-labelledby="faq-q-3" class="faq-content hidden px-6 pb-4 text-xs sm:text-sm text-slate-300 border-t border-kratos-border/40 pt-3 leading-relaxed">
                             Não! A dor tardia não é métrica primária de hipertrofia ou ganho de força. Ela reflete apenas a exposição a estímulos mecânicos incomuns ou a predominância de contrações excêntricas. À medida que seu corpo passa pelo "efeito da repetição da carga" (Repeated Bout Effect), ele se torna mais eficiente e você sentirá menos dores, mantendo os ganhos de forma consistente.
                         </div>
                     </div>
@@ -1158,8 +1177,8 @@
                 <!-- Col 1: Brand Info -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-lg bg-kratos-card border border-red-500/40 p-1 flex items-center justify-center shadow-sm">
-                            <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" class="w-full h-full object-contain">
+                        <div class="w-8 h-8 rounded-lg bg-kratos-card border border-red-500/40 p-1 flex items-center justify-center shadow-sm shrink-0">
+                            <img src="assets/logo-kratos-transparent.png" alt="Logotipo Kratos Fit" width="32" height="32" loading="lazy" decoding="async" class="w-full h-full object-contain">
                         </div>
                         <span class="font-heading font-black text-lg text-white">KRATOS <span class="text-kratos-500">FIT</span></span>
                     </div>
@@ -1199,10 +1218,10 @@
                     </p>
                     <div class="flex items-center gap-2 text-slate-400">
                         <span class="inline-flex items-center gap-1 text-[10px] bg-kratos-card px-2 py-1 rounded border border-kratos-border">
-                            <i data-lucide="shield" class="w-3 h-3 text-emerald-400"></i> Conteúdo Seguro
+                            <i data-lucide="shield" class="w-3 h-3 text-emerald-400" aria-hidden="true"></i> Conteúdo Seguro
                         </span>
                         <span class="inline-flex items-center gap-1 text-[10px] bg-kratos-card px-2 py-1 rounded border border-kratos-border">
-                            <i data-lucide="sparkles" class="w-3 h-3 text-kratos-500"></i> Kratos Tech 2026
+                            <i data-lucide="sparkles" class="w-3 h-3 text-kratos-500" aria-hidden="true"></i> Kratos Tech 2026
                         </span>
                     </div>
                 </div>
@@ -1221,9 +1240,9 @@
         </div>
     </footer>
 
-    <!-- Toast Notification Container -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-kratos-card border border-kratos-500 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
-        <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <!-- Toast Notification Container (Accessible with aria-live="polite") -->
+    <div id="toast" role="status" aria-live="polite" aria-atomic="true" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-kratos-card border border-kratos-500 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+        <i data-lucide="check" class="w-4 h-4 text-emerald-400" aria-hidden="true"></i>
         <span id="toastMessage" class="text-xs font-bold">Plano copiado com sucesso!</span>
     </div>
 

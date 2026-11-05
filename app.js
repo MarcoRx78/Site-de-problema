@@ -31,9 +31,11 @@ function initMobileMenu() {
         const isHidden = mobileMenu.classList.contains('hidden');
         if (isHidden) {
             mobileMenu.classList.remove('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
             if (menuIcon) menuIcon.setAttribute('data-lucide', 'x');
         } else {
             mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             if (menuIcon) menuIcon.setAttribute('data-lucide', 'menu');
         }
         if (window.lucide) lucide.createIcons();
@@ -43,6 +45,7 @@ function initMobileMenu() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             if (menuIcon) menuIcon.setAttribute('data-lucide', 'menu');
             if (window.lucide) lucide.createIcons();
         });
@@ -50,7 +53,7 @@ function initMobileMenu() {
 }
 
 /* ==========================================================
-   2. FAQ ACCORDION
+   2. FAQ ACCORDION (Acessível com aria-expanded)
    ========================================================== */
 function initFaqAccordion() {
     const faqToggles = document.querySelectorAll('.faq-toggle');
@@ -63,13 +66,16 @@ function initFaqAccordion() {
 
             // Close all items
             document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-            document.querySelectorAll('.faq-toggle [data-lucide="chevron-down"]').forEach(i => {
-                i.style.transform = 'rotate(0deg)';
+            document.querySelectorAll('.faq-toggle').forEach(t => {
+                t.setAttribute('aria-expanded', 'false');
+                const i = t.querySelector('[data-lucide="chevron-down"]');
+                if (i) i.style.transform = 'rotate(0deg)';
             });
 
             // Toggle current item
             if (!isOpen) {
                 content.classList.remove('hidden');
+                toggle.setAttribute('aria-expanded', 'true');
                 if (icon) icon.style.transform = 'rotate(180deg)';
             }
         });
@@ -115,11 +121,30 @@ function initDiagnosticWizard() {
     const painBtns = document.querySelectorAll('.pain-btn');
     const timeBtns = document.querySelectorAll('.time-btn');
 
+    // Keyboard support for option cards (Enter & Space)
+    function setupKeyboardSelection(buttons) {
+        buttons.forEach(btn => {
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+    }
+    setupKeyboardSelection(muscleBtns);
+    setupKeyboardSelection(painBtns);
+    setupKeyboardSelection(timeBtns);
+
     // Step 1: Muscle Selection
     muscleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            muscleBtns.forEach(b => b.classList.remove('active'));
+            muscleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-checked', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-checked', 'true');
             state.muscle = btn.getAttribute('data-muscle');
             state.muscleName = btn.querySelector('h4').textContent.trim();
             nextToStep2.removeAttribute('disabled');
@@ -139,8 +164,12 @@ function initDiagnosticWizard() {
     // Step 2: Pain Level Selection
     painBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            painBtns.forEach(b => b.classList.remove('active'));
+            painBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-checked', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-checked', 'true');
             state.painLevel = parseInt(btn.getAttribute('data-pain'), 10);
             state.painName = btn.querySelector('h5').textContent.trim();
             nextToStep3.removeAttribute('disabled');
@@ -169,8 +198,12 @@ function initDiagnosticWizard() {
     // Step 3: Time Elapsed Selection
     timeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            timeBtns.forEach(b => b.classList.remove('active'));
+            timeBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-checked', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-checked', 'true');
             state.timeElapsed = parseInt(btn.getAttribute('data-time'), 10);
             state.timeName = btn.querySelector('h4').textContent.trim();
             generateProtocolBtn.removeAttribute('disabled');
@@ -207,9 +240,18 @@ function initDiagnosticWizard() {
         state.timeElapsed = null;
         state.timeName = '';
 
-        muscleBtns.forEach(b => b.classList.remove('active'));
-        painBtns.forEach(b => b.classList.remove('active'));
-        timeBtns.forEach(b => b.classList.remove('active'));
+        muscleBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+        });
+        painBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+        });
+        timeBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+        });
 
         nextToStep2.setAttribute('disabled', 'true');
         nextToStep3.setAttribute('disabled', 'true');
@@ -376,18 +418,29 @@ ${document.getElementById('nutritionText').textContent.trim()}
 --------------------------------------------------
 Gerado via Kratos Fit: Plataforma Científica de Recuperação.`;
 
+    const copyBtnText = document.getElementById('copyBtnText');
+
+    const handleSuccess = () => {
+        showToast('Protocolo copiado para a área de transferência!');
+        if (copyBtnText) {
+            const originalText = copyBtnText.textContent;
+            copyBtnText.textContent = 'Copiado!';
+            setTimeout(() => {
+                copyBtnText.textContent = originalText;
+            }, 2500);
+        }
+    };
+
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            showToast('Protocolo copiado para a área de transferência!');
-        }).catch(() => {
-            fallbackCopy(textToCopy);
+        navigator.clipboard.writeText(textToCopy).then(handleSuccess).catch(() => {
+            fallbackCopy(textToCopy, handleSuccess);
         });
     } else {
-        fallbackCopy(textToCopy);
+        fallbackCopy(textToCopy, handleSuccess);
     }
 }
 
-function fallbackCopy(text) {
+function fallbackCopy(text, onSuccess) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
@@ -397,7 +450,8 @@ function fallbackCopy(text) {
     textArea.select();
     try {
         document.execCommand('copy');
-        showToast('Protocolo copiado com sucesso!');
+        if (onSuccess) onSuccess();
+        else showToast('Protocolo copiado com sucesso!');
     } catch (err) {
         showToast('Não foi possível copiar automaticamente.');
     }
