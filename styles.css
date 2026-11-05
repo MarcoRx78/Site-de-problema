@@ -1,7 +1,82 @@
 /* ==========================================================
-   KRATOS FIT - Custom CSS & Micro-Interactions
-   Theme: Athletic Cyber-Dark & Crimson Glow (#ff2038)
+   KRATOS FIT - DESIGN SYSTEM & CSS VARIABLES
+   Design System: Minimalism & Swiss Style (High Contrast Dark Mode)
+   Persisted Reference: design-system/kratos-fit/MASTER.md
    ========================================================== */
+
+:root {
+    /* Brand Colors */
+    --color-primary: #ce2029;
+    --color-primary-vibrant: #ff2038;
+    --color-primary-hover: #e60026;
+    --color-primary-dark: #990014;
+    --color-on-primary: #ffffff;
+    --color-primary-glow: rgba(255, 32, 56, 0.35);
+    --color-primary-glow-strong: rgba(255, 32, 56, 0.55);
+
+    /* Backgrounds & Surfaces */
+    --color-background: #08090d;
+    --color-surface: #11131a;
+    --color-card: #161922;
+    --color-card-hover: #1b1f2b;
+    --color-border: #242a38;
+    --color-border-hover: #3b4458;
+
+    /* Text & Foregrounds */
+    --color-foreground: #f1f5f9;
+    --color-foreground-muted: #94a3b8;
+    --color-foreground-subtle: #64748b;
+    --color-heading: #ffffff;
+
+    /* Semantic Status (AA/AAA Contrast Compliant) */
+    --color-success: #10b981;
+    --color-success-bg: rgba(16, 185, 129, 0.12);
+    --color-success-border: rgba(16, 185, 129, 0.3);
+    
+    --color-info: #38bdf8;
+    --color-info-bg: rgba(56, 189, 248, 0.12);
+    --color-info-border: rgba(56, 189, 248, 0.3);
+
+    --color-warning: #f59e0b;
+    --color-warning-bg: rgba(245, 158, 11, 0.12);
+    --color-warning-border: rgba(245, 158, 11, 0.35);
+
+    --color-danger: #ef4444;
+    --color-danger-bg: rgba(239, 68, 68, 0.15);
+    --color-danger-border: rgba(239, 68, 68, 0.5);
+
+    /* Spacing Tokens */
+    --space-xs: 0.25rem;  /* 4px */
+    --space-sm: 0.5rem;   /* 8px */
+    --space-md: 1rem;     /* 16px */
+    --space-lg: 1.5rem;   /* 24px */
+    --space-xl: 2rem;     /* 32px */
+    --space-2xl: 3rem;    /* 48px */
+    --space-3xl: 4rem;    /* 64px */
+
+    /* Typography */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Work Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Shadows & Elevations */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 25px var(--color-primary-glow);
+    --shadow-glow-lg: 0 10px 40px -10px var(--color-primary-glow);
+
+    /* Focus Ring */
+    --ring-focus: 0 0 0 3px rgba(255, 32, 56, 0.6);
+    --ring-focus-light: 0 0 0 3px rgba(255, 255, 255, 0.8);
+}
 
 /* Custom Smooth Scrollbar */
 ::-webkit-scrollbar {
@@ -10,30 +85,56 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #08090d;
+    background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #242a38;
-    border-radius: 4px;
+    background: var(--color-border);
+    border-radius: var(--radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff2038;
+    background: var(--color-primary-vibrant);
 }
 
 /* Base Body Styles */
 body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip to Content Link (Accessibility) */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 12px 20px;
+    background: var(--color-primary-vibrant);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    text-decoration: none;
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-to-content:focus {
+    top: 16px;
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
 }
 
 /* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
     to {
         opacity: 1;
@@ -51,25 +152,46 @@ body {
 }
 
 .animate-fadeIn {
-    animation: fadeIn 0.4s ease-out forwards;
+    animation: fadeIn 0.3s ease-out forwards;
 }
 
 .animate-pulseGlow {
     animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
-/* Selected States for Interactive Wizard */
+/* Selection Cards Ergonomics & Accessibility (Touch Target >= 44px) */
+.muscle-btn,
+.pain-btn,
+.time-btn {
+    min-height: 48px;
+    min-width: 48px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.muscle-btn:hover,
+.pain-btn:hover,
+.time-btn:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-card-hover);
+}
+
+/* Selected States: High-Contrast, Independent of Color Alone (Border + Indicator + Badge) */
 .muscle-btn.active {
-    border-color: #ff2038 !important;
-    background: linear-gradient(135deg, rgba(255, 32, 56, 0.15) 0%, rgba(22, 25, 34, 0.95) 100%) !important;
-    box-shadow: 0 0 20px rgba(255, 32, 56, 0.3) !important;
+    border-color: var(--color-primary-vibrant) !important;
+    border-width: 2px !important;
+    background: linear-gradient(135deg, rgba(255, 32, 56, 0.18) 0%, rgba(22, 25, 34, 0.98) 100%) !important;
+    box-shadow: 0 0 0 1px var(--color-primary-vibrant), var(--shadow-glow) !important;
     transform: translateY(-2px);
 }
 
 .muscle-btn.active .selection-check {
-    border-color: #ff2038 !important;
-    background-color: #ff2038 !important;
+    border-color: var(--color-primary-vibrant) !important;
+    background-color: var(--color-primary-vibrant) !important;
     color: #ffffff !important;
+    opacity: 1 !important;
+    transform: scale(1.1);
 }
 
 .muscle-btn.active h4 {
@@ -77,39 +199,67 @@ body {
 }
 
 .pain-btn.active {
-    border-color: #ff2038 !important;
-    background: linear-gradient(135deg, rgba(255, 32, 56, 0.2) 0%, rgba(22, 25, 34, 0.95) 100%) !important;
-    box-shadow: 0 0 22px rgba(255, 32, 56, 0.35) !important;
+    border-color: var(--color-primary-vibrant) !important;
+    border-width: 2px !important;
+    background: linear-gradient(135deg, rgba(255, 32, 56, 0.22) 0%, rgba(22, 25, 34, 0.98) 100%) !important;
+    box-shadow: 0 0 0 1px var(--color-primary-vibrant), var(--shadow-glow) !important;
     transform: translateY(-2px);
 }
 
 .time-btn.active {
-    border-color: #ff2038 !important;
-    background: linear-gradient(135deg, rgba(255, 32, 56, 0.15) 0%, rgba(22, 25, 34, 0.95) 100%) !important;
-    box-shadow: 0 0 20px rgba(255, 32, 56, 0.3) !important;
+    border-color: var(--color-primary-vibrant) !important;
+    border-width: 2px !important;
+    background: linear-gradient(135deg, rgba(255, 32, 56, 0.18) 0%, rgba(22, 25, 34, 0.98) 100%) !important;
+    box-shadow: 0 0 0 1px var(--color-primary-vibrant), var(--shadow-glow) !important;
     transform: translateY(-2px);
 }
 
 .time-btn.active h4 {
-    color: #ff2038 !important;
+    color: var(--color-primary-vibrant) !important;
 }
 
-/* Touch Ergonomics & Accessible Focus */
-button, a {
-    touch-action: manipulation;
+/* Accessible Focus States */
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+    outline: 2px solid var(--color-primary-vibrant) !important;
+    outline-offset: 3px !important;
 }
 
-button:focus-visible, a:focus-visible {
-    outline: 2px solid #ff2038;
-    outline-offset: 3px;
-}
-
-/* Glassmorphism Accents */
+/* Accessible Glassmorphism Accents */
 .glass-panel {
-    background: rgba(22, 25, 34, 0.75);
+    background: rgba(22, 25, 34, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-border);
+}
+
+/* Prefers Reduced Motion (Accessibility WCAG 2.1) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .animate-pulse,
+    .animate-ping,
+    .animate-fadeIn,
+    .animate-pulseGlow {
+        animation: none !important;
+    }
+
+    .muscle-btn:hover,
+    .pain-btn:hover,
+    .time-btn:hover,
+    .muscle-btn.active,
+    .pain-btn.active,
+    .time-btn.active {
+        transform: none !important;
+    }
 }
 
 /* Print Optimization for Diagnostic Protocol */
@@ -119,7 +269,7 @@ button:focus-visible, a:focus-visible {
         color: #000000 !important;
     }
     
-    header, footer, #inicio, #solucoes, #seguranca, #sobre, #resetWizardBtn, #copyProtocolBtn {
+    header, footer, #inicio, #solucoes, #seguranca, #sobre, #resetWizardBtn, #copyProtocolBtn, .skip-to-content {
         display: none !important;
     }
 
