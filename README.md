@@ -81,3 +81,6 @@ Como a aplicação foi desenvolvida em **HTML5**, **Tailwind CSS** (via CDN), **
 
 7. **Rodapé (Footer)**:
    - Selos de segurança e ética, atalhos de navegação e termos.
+
+
+# Site-de-problema
